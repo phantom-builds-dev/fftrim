@@ -1,0 +1,1079 @@
+@import './base.css';
+
+/* ──────────────── Shell ──────────────── */
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* ──────────────── Title bar ──────────────── */
+
+.titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--titlebar-h);
+    padding-left: 12px;
+    -webkit-app-region: drag;
+}
+
+.tb-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tb-logo {
+    width: 19px;
+    height: 19px;
+}
+
+.tb-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-2);
+}
+
+.tb-version {
+    font-size: 10px;
+    color: var(--text-3);
+}
+
+.tb-window {
+    display: flex;
+}
+
+/* ──────────────── About ──────────────── */
+
+.about-wrap {
+    position: relative;
+    display: grid;
+    place-items: center;
+    margin-left: -2px;
+}
+
+.about-btn {
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    color: var(--text-3);
+    border-radius: var(--r-circle);
+    transition:
+        background var(--t-fast),
+        color var(--t-fast);
+}
+
+.about-btn:hover,
+.about-btn.open {
+    color: var(--text-1);
+    background: var(--surface-2);
+}
+
+.about-pop {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: -10px;
+    z-index: 30;
+    display: grid;
+    gap: 10px;
+    width: 340px;
+    padding: 14px;
+    border-radius: var(--r-lg);
+    background: var(--surface-solid);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-2);
+    -webkit-app-region: no-drag;
+}
+
+.about-head {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.about-logo {
+    width: 24px;
+    height: 24px;
+}
+
+.about-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-1);
+}
+
+.about-ver {
+    margin-left: 7px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-3);
+}
+
+.about-text {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-2);
+    user-select: text;
+    cursor: text;
+}
+
+.about-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    padding-top: 2px;
+}
+
+.tb-win {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: var(--titlebar-h);
+    color: var(--text-2);
+    transition:
+        background var(--t-fast),
+        color var(--t-fast);
+}
+
+.tb-win:hover {
+    background: var(--surface-2);
+    color: var(--text-1);
+}
+
+.tb-close:hover {
+    background: #d3383e;
+    color: #fff;
+}
+
+.tb-win:focus-visible {
+    outline-offset: -3px;
+    border-radius: 0;
+}
+
+/* ──────────────── Top bar ──────────────── */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 16px 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.open-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    font-size: 13px;
+    font-weight: 550;
+    border-radius: var(--r-sm);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-1);
+    transition:
+        background var(--t-fast),
+        border-color var(--t-fast),
+        transform var(--t-fast);
+}
+
+.open-btn:hover {
+    background: var(--surface-3);
+    border-color: var(--border-strong);
+}
+
+.open-btn:active {
+    transform: translateY(1px);
+}
+
+.open-icon {
+    color: var(--accent-hi);
+}
+
+.file-meta {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+    font-size: 12px;
+    color: var(--text-2);
+}
+
+.fm-name {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+    font-weight: 600;
+    color: var(--text-1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fm-icon {
+    color: var(--accent);
+}
+
+.fm-dot {
+    color: var(--text-3);
+    opacity: 0.7;
+}
+
+/* ──────────────── Stage ──────────────── */
+
+.stage {
+    display: grid;
+    place-items: center;
+    flex: 1;
+    min-height: 0;
+    padding: 20px;
+    background: var(--surface-sunken);
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.35);
+}
+
+.preview-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: var(--surface-sunken);
+}
+
+.preview {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.preview-notice {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px;
+    text-align: center;
+    background: var(--surface-sunken);
+    color: var(--warn);
+}
+
+.preview-notice-title {
+    font-size: 14px;
+    color: var(--text-1);
+}
+
+.preview-notice-body {
+    max-width: 420px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-2);
+}
+
+/* ──────────────── Crash screen ──────────────── */
+
+.crash {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    padding: 32px;
+    -webkit-app-region: drag;
+}
+
+.crash-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    max-width: 560px;
+    text-align: center;
+    -webkit-app-region: no-drag;
+}
+
+.crash-title {
+    font-size: 15px;
+    color: var(--danger);
+}
+
+.crash-message {
+    max-height: 40vh;
+    padding: 10px 12px;
+    overflow: auto;
+    font-size: 12px;
+    color: var(--text-2);
+    text-align: left;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+}
+
+.crash-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* ──────────────── Drop zone ──────────────── */
+
+.dropzone {
+    display: grid;
+    place-items: center;
+    width: min(560px, 100%);
+    padding: 56px 32px;
+    border: 2px dashed var(--border-strong);
+    border-radius: var(--r-lg);
+    background: var(--surface-1);
+    cursor: pointer;
+    transition:
+        border-color var(--t-med),
+        background var(--t-med),
+        transform var(--t-med);
+}
+
+.dropzone:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    transform: translateY(-2px);
+}
+
+.drop-inner {
+    display: grid;
+    justify-items: center;
+    gap: 14px;
+    font-size: 14px;
+    color: var(--text-2);
+}
+
+.drop-icon {
+    color: var(--text-3);
+    transition: color var(--t-med);
+}
+
+.dropzone:hover .drop-icon {
+    color: var(--accent-hi);
+}
+
+.drop-error {
+    font-size: 12px;
+    color: var(--danger);
+}
+
+/* ──────────────── Transport ──────────────── */
+
+.transport {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-1);
+}
+
+.transport-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.skip-btn {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    color: var(--text-2);
+    border-radius: var(--r-circle);
+    transition:
+        background var(--t-fast),
+        color var(--t-fast);
+}
+
+.skip-btn:hover {
+    color: var(--text-1);
+    background: var(--surface-2);
+}
+
+.skip-btn:active {
+    transform: scale(0.94);
+}
+
+.skip-label {
+    position: absolute;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    pointer-events: none;
+}
+
+.transport-btn {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    padding-left: 2px;
+    color: #fff;
+    border-radius: var(--r-circle);
+    background: linear-gradient(140deg, var(--accent-hi), var(--accent-lo));
+    transition:
+        transform var(--t-fast),
+        filter var(--t-fast);
+}
+
+.transport-btn:hover {
+    filter: brightness(1.08);
+}
+
+.transport-btn:active {
+    transform: scale(0.94);
+}
+
+.time-readout {
+    font-size: 14px;
+    letter-spacing: 0.01em;
+}
+
+.tr-cur {
+    color: var(--text-1);
+    font-weight: 600;
+}
+
+.tr-total {
+    color: var(--text-3);
+}
+
+.collapse-btn {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    margin-left: -6px;
+    color: var(--text-3);
+    border-radius: var(--r-sm);
+    transition:
+        background var(--t-fast),
+        color var(--t-fast);
+}
+
+.collapse-btn:hover:not(:disabled) {
+    color: var(--text-1);
+    background: var(--surface-2);
+}
+
+.collapse-btn:disabled {
+    opacity: 0.4;
+}
+
+/* ──────────────── Timeline ──────────────── */
+
+.tl-track {
+    position: relative;
+    height: 30px;
+    cursor: pointer;
+    touch-action: none;
+}
+
+.tl-base,
+.tl-selected,
+.tl-played {
+    position: absolute;
+    top: 50%;
+    height: 6px;
+    transform: translateY(-50%);
+    border-radius: var(--r-circle);
+    pointer-events: none;
+}
+
+.tl-base {
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.09);
+}
+
+.tl-selected {
+    background: rgba(91, 140, 250, 0.3);
+}
+
+.tl-played {
+    background: linear-gradient(90deg, var(--accent-lo), var(--accent-hi));
+}
+
+.tl-playhead {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: 0;
+    width: 2px;
+    margin-left: -1px;
+    border-radius: var(--r-circle);
+    background: #fff;
+    will-change: transform;
+    pointer-events: none;
+}
+
+.tl-handle {
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 22px;
+    margin-left: -6px;
+    transform: translateY(-50%);
+    border-radius: var(--r-sm);
+    background: linear-gradient(180deg, #ffffff, #d7dded);
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    box-shadow: var(--shadow-1);
+    cursor: ew-resize;
+    transition: transform var(--t-fast);
+}
+
+.tl-handle:hover {
+    transform: translateY(-50%) scaleY(1.12);
+}
+
+/* ──────────────── Controls panel ──────────────── */
+
+.controls {
+    display: grid;
+    gap: var(--ctrl-gap);
+    padding: 16px 18px 18px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.14));
+}
+
+.ctrl-row {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+}
+
+.ctrl-label {
+    font-size: 10px;
+    font-weight: 650;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--text-3);
+}
+
+.ctrl-body {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.divider {
+    height: 1px;
+    margin: 3px 0;
+    background: var(--border);
+}
+
+/* ──────────────── Segmented control ──────────────── */
+
+.segmented {
+    display: flex;
+    gap: 2px;
+    padding: 3px;
+    border-radius: var(--r-sm);
+    background: rgba(0, 0, 0, 0.24);
+    border: 1px solid var(--border);
+}
+
+.seg {
+    padding: 7px 15px;
+    font-size: 13px;
+    font-weight: 550;
+    color: var(--text-2);
+    border-radius: var(--r-xs);
+    white-space: nowrap;
+    transition:
+        background var(--t-fast),
+        color var(--t-fast);
+}
+
+.seg:hover:not(.active):not(:disabled) {
+    background: var(--surface-2);
+    color: var(--text-1);
+}
+
+.seg.active {
+    color: #fff;
+    background: linear-gradient(140deg, var(--accent-hi), var(--accent-lo));
+    box-shadow: var(--shadow-1);
+}
+
+/* ──────────────── Custom target size ──────────────── */
+
+.custom-size {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 11px 0 3px;
+    border-radius: var(--r-sm);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    transition: border-color var(--t-fast);
+}
+
+.custom-size:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.custom-input {
+    width: calc(4ch + 11px + 6px);
+    padding: 8px 6px 8px 11px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+}
+
+.custom-input:focus-visible {
+    outline: none;
+}
+
+.custom-unit {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-3);
+}
+
+.target-field {
+    position: relative;
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+}
+
+.target-warn {
+    position: absolute;
+    top: calc(100% + var(--ctrl-gap));
+    left: 0;
+    display: grid;
+    justify-items: start;
+    gap: 2px;
+    white-space: nowrap;
+}
+
+.tw-msg {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--warn);
+}
+
+/* ──────────────── Trim / time pills ──────────────── */
+
+.trim-body {
+    gap: 18px;
+}
+
+.time-pill {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.tp-label {
+    font-size: 10px;
+    font-weight: 650;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--text-3);
+}
+
+.tp-box {
+    display: flex;
+    align-items: stretch;
+    border-radius: var(--r-sm);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition:
+        border-color var(--t-fast),
+        box-shadow var(--t-fast);
+}
+
+.tp-box:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.tp-value {
+    width: 76px;
+    padding: 6px 4px 6px 11px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.tp-value:focus-visible {
+    outline: none;
+}
+
+.tp-btn {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    color: var(--text-3);
+    border-left: 1px solid var(--border);
+    transition:
+        background var(--t-fast),
+        color var(--t-fast);
+}
+
+.tp-btn:hover {
+    background: var(--accent-soft);
+    color: var(--accent-hi);
+}
+
+.trim-duration {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-2);
+}
+
+/* ──────────────── Encode row ──────────────── */
+
+.encode-body {
+    gap: 10px;
+}
+
+.info-wrap {
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.info-icon {
+    color: var(--text-3);
+    cursor: help;
+    transition: color var(--t-fast);
+}
+
+.info-wrap:hover .info-icon {
+    color: var(--accent-hi);
+}
+
+.info-pop {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    z-index: 20;
+    width: 296px;
+    padding: 12px 14px;
+    transform: translateX(-50%);
+    border-radius: var(--r-sm);
+    background: var(--surface-solid);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-2);
+}
+
+.info-title {
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 650;
+    color: var(--text-1);
+}
+
+.info-text {
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--text-2);
+}
+
+.info-text b {
+    color: var(--text-1);
+    font-weight: 600;
+}
+
+.info-arrow {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    margin: -6px 0 0 -5px;
+    transform: rotate(45deg);
+    background: var(--surface-solid);
+    border-right: 1px solid var(--border-strong);
+    border-bottom: 1px solid var(--border-strong);
+}
+
+.mute-check {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-left: 6px;
+    padding: 7px 13px 7px 9px;
+    font-size: 13px;
+    color: var(--text-2);
+    border-radius: var(--r-sm);
+    transition:
+        background var(--t-fast),
+        color var(--t-fast);
+}
+
+.mute-check:hover {
+    background: var(--surface-2);
+    color: var(--text-1);
+}
+
+.mute-box {
+    display: grid;
+    place-items: center;
+    width: 17px;
+    height: 17px;
+    color: transparent;
+    border-radius: var(--r-xs);
+    background: rgba(0, 0, 0, 0.24);
+    border: 1px solid var(--border-strong);
+    transition:
+        background var(--t-fast),
+        border-color var(--t-fast),
+        color var(--t-fast);
+}
+
+.mute-check.on {
+    color: var(--text-1);
+}
+
+.mute-check.on .mute-box {
+    color: #fff;
+    background: linear-gradient(140deg, var(--accent-hi), var(--accent-lo));
+    border-color: transparent;
+}
+
+/* ──────────────── Estimate row ──────────────── */
+
+.estimate-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 2px;
+}
+
+.est-left {
+    display: grid;
+    grid-template-columns: 92px auto minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+    min-width: 0;
+}
+
+.est-body {
+    display: grid;
+    gap: 1px;
+    min-width: 0;
+    height: var(--est-body-h);
+    align-content: center;
+}
+
+.est-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+}
+
+.est-size {
+    min-width: 9ch;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-1);
+}
+
+.est-dim {
+    font-size: 13px;
+    color: var(--text-2);
+}
+
+.est-sub {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 4px 12px;
+    flex-wrap: wrap;
+    max-height: var(--est-body-h);
+    overflow-y: auto;
+    font-size: 12px;
+}
+
+.est-note,
+.badge-down,
+.est-error,
+.est-done {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    height: var(--est-sub-h);
+}
+
+.est-note {
+    color: var(--text-3);
+}
+
+.badge-down {
+    padding: 0 9px 0 7px;
+    font-weight: 550;
+    color: var(--accent-hi);
+    border-radius: var(--r-circle);
+    background: var(--accent-soft);
+}
+
+.est-error {
+    height: auto;
+    min-height: var(--est-sub-h);
+    gap: 2px 10px;
+    flex-wrap: wrap;
+    color: var(--danger);
+}
+
+.est-done {
+    gap: 10px;
+    color: var(--success);
+    font-weight: 550;
+}
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--accent-hi);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: rgba(123, 164, 255, 0.4);
+    transition: text-decoration-color var(--t-fast);
+}
+
+.link:hover {
+    text-decoration-color: var(--accent-hi);
+}
+
+/* ──────────────── Export controls ──────────────── */
+
+.est-right {
+    flex: none;
+}
+
+.cta {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: var(--r-sm);
+    background: linear-gradient(140deg, var(--accent-hi), var(--accent-lo));
+    box-shadow: var(--shadow-1);
+    transition:
+        filter var(--t-fast),
+        transform var(--t-fast);
+}
+
+.cta:hover:not(:disabled) {
+    filter: brightness(1.08);
+}
+
+.cta:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.cta:disabled {
+    opacity: 0.4;
+    box-shadow: none;
+}
+
+.exporting {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.progress {
+    position: relative;
+    width: 190px;
+    height: 6px;
+    border-radius: var(--r-circle);
+    background: rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: var(--r-circle);
+    background: linear-gradient(90deg, var(--accent-lo), var(--accent-hi));
+    transition: width var(--t-med);
+}
+
+.progress-pct {
+    min-width: 40px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+}
+
+.btn-ghost {
+    padding: 9px 16px;
+    font-size: 13px;
+    font-weight: 550;
+    color: var(--text-2);
+    border-radius: var(--r-sm);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    transition:
+        background var(--t-fast),
+        color var(--t-fast),
+        border-color var(--t-fast);
+}
+
+.btn-ghost:hover {
+    color: var(--danger);
+    background: rgba(242, 100, 106, 0.12);
+    border-color: rgba(242, 100, 106, 0.4);
+}
+
+/* ──────────────── Narrow windows ──────────────── */
+
+@media (max-width: 900px) {
+    .ctrl-row,
+    .est-left {
+        grid-template-columns: 74px minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .estimate-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .est-right .cta {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .progress {
+        flex: 1;
+        width: auto;
+    }
+}

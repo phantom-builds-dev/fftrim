@@ -1,0 +1,5 @@
+export { probe } from './probe'
+export { planCompress, planPrecise, resolvePlan, validateSpan } from './plan'
+export { runExport, isExporting, discardInFlightOutput } from './encode'
+export { cancel, isCancelled, FfmpegError, TimeoutError, CancelledError } from './process'
+export type { ProgressCb } from './process'

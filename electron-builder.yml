@@ -1,0 +1,33 @@
+appId: com.fftrim.app
+productName: FFtrim
+directories:
+    buildResources: build
+afterPack: build/afterPack.cjs
+files:
+    - out/**
+    - resources/**
+    - node_modules/**
+    - package.json
+asarUnpack:
+    - '**/node_modules/ffmpeg-static/**'
+    - '**/node_modules/@ffprobe-installer/**'
+extraResources:
+    - from: LICENSE
+      to: licenses/GPLv3.txt
+    - from: THIRD-PARTY-NOTICES.md
+      to: licenses/THIRD-PARTY-NOTICES.md
+win:
+    executableName: fftrim
+    target:
+        - nsis
+nsis:
+    artifactName: ${name}-${version}-setup.${ext}
+    oneClick: false
+    allowToChangeInstallationDirectory: true
+    # GPLv3 needs no assent to install, but the wizard page is the one place a
+    # recipient reliably sees the licence before the app is on disk.
+    license: LICENSE
+    shortcutName: ${productName}
+    uninstallDisplayName: ${productName}
+    createDesktopShortcut: always
+npmRebuild: false

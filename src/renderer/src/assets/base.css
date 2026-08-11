@@ -1,0 +1,152 @@
+/* ──────────────── Tokens ──────────────── */
+
+:root {
+    --bg-top: #262b38;
+    --bg-mid: #1e222c;
+    --bg-bottom: #191c24;
+
+    --surface-sunken: #14161d;
+    --surface-1: rgba(255, 255, 255, 0.035);
+    --surface-2: rgba(255, 255, 255, 0.058);
+    --surface-3: rgba(255, 255, 255, 0.095);
+    --surface-solid: #2a2f3b;
+
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.14);
+
+    --text-1: #eaedf3;
+    --text-2: #a6aebe;
+    --text-3: #6f7889;
+
+    --accent: #5b8cfa;
+    --accent-hi: #7ba4ff;
+    --accent-lo: #4370e0;
+    --accent-soft: rgba(91, 140, 250, 0.16);
+    --accent-ring: rgba(91, 140, 250, 0.42);
+
+    --danger: #f2646a;
+    --warn: #e5a84c;
+    --success: #4ed39b;
+
+    --r-xs: 2px;
+    --r-sm: 3px;
+    --r-lg: 6px;
+    --r-circle: 999px;
+
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.28);
+    --shadow-2: 0 18px 48px -12px rgba(0, 0, 0, 0.7);
+
+    --ease: cubic-bezier(0.32, 0.72, 0, 1);
+    --t-fast: 120ms var(--ease);
+    --t-med: 220ms var(--ease);
+
+    --font: 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Cascadia Code', 'JetBrains Mono', Consolas, ui-monospace, monospace;
+
+    --titlebar-h: 34px;
+    --est-sub-h: 22px;
+    --est-body-h: 56px;
+    --ctrl-gap: 13px;
+
+    color-scheme: dark;
+}
+
+/* ──────────────── Reset ──────────────── */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font);
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-1);
+    background-color: var(--bg-mid);
+    background-image:
+        radial-gradient(120% 62% at 50% -14%, rgba(91, 140, 250, 0.13), transparent 62%),
+        linear-gradient(178deg, var(--bg-top) 0%, var(--bg-mid) 46%, var(--bg-bottom) 100%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow: hidden;
+    user-select: none;
+    cursor: default;
+}
+
+/* ──────────────── Elements ──────────────── */
+
+button,
+input {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+}
+
+button:disabled {
+    cursor: default;
+}
+
+input {
+    user-select: text;
+    cursor: text;
+    -webkit-app-region: no-drag;
+}
+
+/* ──────────────── Focus and selection ──────────────── */
+
+:focus-visible {
+    outline: 2px solid var(--accent-ring);
+    outline-offset: 2px;
+    border-radius: var(--r-sm);
+}
+
+::selection {
+    background: var(--accent-soft);
+    color: var(--text-1);
+}
+
+/* ──────────────── Utilities ──────────────── */
+
+svg {
+    display: block;
+    flex: none;
+}
+
+.mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+}
+
+.no-drag {
+    -webkit-app-region: no-drag;
+}
+
+/* ──────────────── Reduced motion ──────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 1ms !important;
+        animation-duration: 1ms !important;
+    }
+}

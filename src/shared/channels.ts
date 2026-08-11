@@ -1,0 +1,22 @@
+export const CH = {
+    appVersion: 'app:version',
+    appOpenLog: 'app:openLog',
+    appLogError: 'app:logError',
+    appOpenLicense: 'app:openLicense',
+    dialogOpen: 'dialog:open',
+    dialogSave: 'dialog:save',
+    shellShowItem: 'shell:showItem',
+    mediaAcceptDrop: 'media:acceptDrop',
+    mediaProbe: 'media:probe',
+    mediaPlan: 'media:plan',
+    exportRun: 'export:run',
+    exportCancel: 'export:cancel',
+    exportProgress: 'export:progress',
+    settingsGet: 'settings:get',
+    settingsPatch: 'settings:patch',
+    windowMinimize: 'window:minimize',
+    windowToggleMaximize: 'window:toggleMaximize',
+    windowClose: 'window:close',
+    windowIsMaximized: 'window:isMaximized',
+    windowMaximized: 'window:maximized'
+} as const
