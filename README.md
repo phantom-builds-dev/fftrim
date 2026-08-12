@@ -27,28 +27,37 @@ it, a public GPLv3 source tree is exactly what lets you.
 Keep your original videos. FFtrim refuses to write over its source file, but treat
 that as a decision you can go and verify in the code rather than a promise from me.
 
+## Downloading and installing
+
+Go to the Releases page: https://github.com/phantom-builds-dev/fftrim/releases
+
+Under the latest release, download `fftrim-<version>-setup.exe` (the 
+`SHA256SUMS.txt` file next to it is for the verification step below, you don't need 
+it to install). Run the installer and step through it. It will ask where to install 
+and whether to add a desktop shortcut.
+
+FFtrim isn't code signed, so Windows will most likely show a "Windows protected your 
+PC" SmartScreen warning the first time you run the installer. That's expected for an 
+unsigned app, nothing is wrong. Click "More info", then "Run anyway" to continue.
+
 ## Verifying a download
 
-Releases are not code signed, so Windows won't recognize the publisher. The first
-time you run the installer, expect a "Windows protected your PC" warning. That's
-normal for an unsigned app like this one, nothing is wrong. You can actually check
-that the file you downloaded is the one that was published by me.
+`fftrim-<version>-setup.exe` on the Releases page has a SHA256 hash shown next to 
+it, computed by GitHub from the exact bytes you're about to download. Click the copy 
+icon to get the full value, then paste it somewhere to compare with the value in 
+`SHA256SUMS.txt` (also in the release) and they should match, which confirms the 
+download wasn't corrupted or altered.
 
-Every release ships a `SHA256SUMS.txt` file. It lists a hash for each download, a
-short fingerprint of the file's exact contents, where changing even a single
-character changes the hash completely. If the hash of your downloaded file matches
-the one in that list, you know it's exactly what was released, not corrupted or
-changed by a malicious actor.
-
-To check it: open PowerShell (search "PowerShell" in the Start menu), navigate to
-the folder you downloaded the installer to, and run:
+If you got the installer from somewhere other than the Releases page itself,
+you can check it locally instead. Open PowerShell, navigate to the folder you
+downloaded to, and run:
 
 ```powershell
 Get-FileHash .\fftrim-1.0.0-setup.exe -Algorithm SHA256
 ```
 
-Compare the value it prints to the line for that filename in `SHA256SUMS.txt`, they
-should match (uppercase or lowercase doesn't matter). If you have `sha256sum`
+Compare the result to the matching line in `SHA256SUMS.txt`, they
+should match (upper- or lowercase doesn't matter). If you have `sha256sum`
 available instead (Git Bash, WSL, ...), `sha256sum -c SHA256SUMS.txt` checks every
 file in the release at once.
 
