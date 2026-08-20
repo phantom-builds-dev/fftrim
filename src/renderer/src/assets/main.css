@@ -911,8 +911,9 @@
     align-content: center;
     gap: 4px 12px;
     flex-wrap: wrap;
+    min-width: 120px;
     max-height: var(--est-body-h);
-    overflow-y: auto;
+    overflow: hidden;
     font-size: 12px;
 }
 
@@ -1055,9 +1056,13 @@
 /* ──────────────── Narrow windows ──────────────── */
 
 @media (max-width: 900px) {
-    .ctrl-row,
-    .est-left {
+    .ctrl-row {
         grid-template-columns: 74px minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .est-left {
+        grid-template-columns: 74px auto minmax(0, 1fr);
         gap: 10px;
     }
 
