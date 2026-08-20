@@ -31,7 +31,7 @@ that as a decision you can go and verify in the code rather than a promise from 
 
 Go to the Releases page: https://github.com/phantom-builds-dev/fftrim/releases
 
-Under the latest release, download `fftrim-<version>-setup.exe` (the 
+Under the latest release, download `fftrim-1.0.1-setup.exe` (the 
 `SHA256SUMS.txt` file next to it is for the verification step below, you don't need 
 it to install). Run the installer and step through it. It will ask where to install 
 and whether to add a desktop shortcut.
@@ -42,7 +42,7 @@ unsigned app, nothing is wrong. Click "More info", then "Run anyway" to continue
 
 ## Verifying a download
 
-`fftrim-<version>-setup.exe` on the Releases page has a SHA256 hash shown next to 
+`fftrim-1.0.1-setup.exe` on the Releases page has a SHA256 hash shown next to 
 it, computed by GitHub from the exact bytes you're about to download. Click the copy 
 icon to get the full value, then paste it somewhere to compare with the value in 
 `SHA256SUMS.txt` (also in the release) and they should match, which confirms the 
@@ -53,7 +53,7 @@ you can check it locally instead. Open PowerShell, navigate to the folder you
 downloaded to, and run:
 
 ```powershell
-Get-FileHash .\fftrim-1.0.0-setup.exe -Algorithm SHA256
+Get-FileHash .\fftrim-1.0.1-setup.exe -Algorithm SHA256
 ```
 
 Compare the result to the matching line in `SHA256SUMS.txt`, they
